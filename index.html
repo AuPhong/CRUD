@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <title>CRUD</title>
+    <style>
+    </style>
+</head>
+
+
+<body>
+
+<!--                                Start NavBar                                            -->
+
+<nav class="navbar navbar-expand-lg" style="background-color: aqua">
+    <a class="navbar-brand" href="/index.html" >Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a id="register" class="nav-link" href="./FormLogin/register.html">Register <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.html"  onclick="logout()">LogOut</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+
+<!--                                End NavBar                                            -->
+
+
+
+
+                                        <!--Start content-->
+<h1 style="text-align: center">Student manager</h1>
+<span id="notify"></span>
+<input type="text" id="studentName">
+<input type="button" value="Create" onclick="createStudent()">
+<input type="text" id="searchStudent" placeholder="Search here" oninput="actionSearch()">
+<button onclick="actionSearch()">Search</button>
+<br><br>
+<table class="table">
+    <tr>
+        <th>STT</th>
+        <th>Họ tên</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <tbody id="tbody">
+    </tbody>
+</table>
+                                        <!--End content-->
+
+
+
+
+                                        <!--Start footer-->
+<!-- Footer -->
+<footer class=" text-center text-white" style="background-color: #2c2828">
+    <!-- Grid container -->
+    <div class="container p-4">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+            <!-- Facebook -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-facebook-f"></i
+            ></a>
+
+            <!-- Twitter -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-twitter"></i
+            ></a>
+
+            <!-- Google -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-google"></i
+            ></a>
+
+            <!-- Instagram -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-instagram"></i
+            ></a>
+
+            <!-- Linkedin -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-linkedin-in"></i
+            ></a>
+
+            <!-- Github -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+            ><i class="fab fa-github"></i
+            ></a>
+        </section>
+        <!-- Section: Social media -->
+
+        <!-- Section: Form -->
+        <section class="">
+            <form action="">
+                <!--Grid row-->
+                <div class="row d-flex justify-content-center">
+                    <!--Grid column-->
+                    <div class="col-auto">
+                        <p class="pt-2">
+                            <strong>Sign up for our newsletter</strong>
+                        </p>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-5 col-12">
+                        <!-- Email input -->
+                        <div class="form-outline form-white mb-4">
+                            <input type="email" id="form5Example21" class="form-control" />
+                            <label class="form-label" for="form5Example21">Email address</label>
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-auto">
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-outline-light mb-4">
+                            Subscribe
+                        </button>
+                    </div>
+                    <!--Grid column-->
+                </div>
+                <!--Grid row-->
+            </form>
+        </section>
+        <!-- Section: Form -->
+
+        <!-- Section: Text -->
+        <section class="mb-4">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
+                repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
+                eum harum corrupti dicta, aliquam sequi voluptate quas.
+            </p>
+        </section>
+        <!-- Section: Text -->
+
+        <!-- Section: Links -->
+        <section class="">
+            <!--Grid row-->
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Links</h5>
+
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="#!" class="text-white">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 4</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Links</h5>
+
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="#!" class="text-white">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 4</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Links</h5>
+
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="#!" class="text-white">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 4</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Links</h5>
+
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="#!" class="text-white">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">Link 4</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid column-->
+            </div>
+            <!--Grid row-->
+        </section>
+        <!-- Section: Links -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2020 Copyright:
+        <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+
+                                                                <!-- End Footer -->
+</body>
+</html>
+
+
+
+
+
+<script>
+    let studentList = ['Black Dog', 'Yellow Cat', 'Blue Bird', 'Gradient Human']
+    let studentSearch = []
+    function showList() {
+        if (window.localStorage.getItem('user_key')===null){
+            return
+        }
+        if (window.localStorage.getItem('user_key')!=null){
+            document.getElementById('register').innerHTML = ''
+
+        }
+        let drawTable = ''
+        for (let i = 0; i < studentList.length; i++) {
+            drawTable += `<tr>
+                            <td>${i + 1}</td>
+                            <td>${studentList[i]}</td>
+                            <td><button onclick="editStudent(${i})">Edit</button></td>
+                            <td><button onclick="deleteStudent(${i})">Delete</button></td>
+                          </tr>`
+        }
+        document.getElementById('tbody').innerHTML = drawTable
+    }
+
+    showList()
+
+    function createStudent() {
+        let studentName = document.getElementById('studentName').value
+        if (studentName = studentName.trim()) {
+            studentList.push(studentName)
+            showList()
+            document.getElementById('notify').innerHTML = `<span style="color: green">Sucessful to creat new student</span>`
+        } else {
+            document.getElementById('notify').innerHTML = `<span style="color: red">Please enter student name</span>`
+        }
+    }
+
+    function editStudent(index) {
+        let edit = prompt('Input put the student name to edit: ', studentList[index])
+        studentList[index] = edit
+        showList()
+    }
+
+    function deleteStudent(index) {
+        console.log(index)
+        studentList.splice(index,1)
+        showList()
+    }
+
+    function showSearch(){
+        let drawTable = ''
+        for (let i=0; i<studentSearch.length; i++){
+            drawTable += `<tr>
+                               <td>${i+1}</td>
+                               <td>${studentSearch[i]}</td>
+                               <td><button onclick="editStudent(${i})">Edit</button></td>
+                               <td><button onclick="deleteStudent(${i})">Delete</button></td>
+                          </tr>`
+        }
+        document.getElementById('tbody').innerHTML = drawTable
+    }
+
+    function actionSearch(){
+        // studentSearch = studentSearch.splice(0,studentSearch.length)
+        studentSearch = [];
+        let searchValue = document.getElementById('searchStudent').value
+        let searchLC = searchValue.toLowerCase()
+        console.log('searchLC = ', searchLC)
+        if (searchValue == ''){
+            showList()
+            return
+        }
+
+
+        let studentLC = []
+        console.log('leng = ', studentList.length)
+        for (let i=0; i<studentList.length; i++){
+            studentLC.push(studentList[i].toLowerCase())
+        }
+
+        console.log('studentLC == ', studentLC)
+        for (let i = 0; i < studentLC.length; i++) {
+            if (searchLC === studentLC[i]){
+                studentSearch.push(studentList[i])
+            }
+        }
+        showSearch()
+    }
+
+    function logout(){
+        window.localStorage.clear()
+        window.location.reload()
+    }
+
+
+
+
+</script>
